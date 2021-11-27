@@ -1,6 +1,6 @@
 syntax = "proto3";
-option go_package = "./;pbuser";
-package pbuser;
+option go_package = "./;helloworld";
+package helloworld;
 
 // The greeting service definition.
 service Greeter {

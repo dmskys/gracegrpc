@@ -20,27 +20,27 @@
 package main
 
 import (
-	"os"
-	"log"
 	"context"
+	"log"
+	"os"
 
 	"google.golang.org/grpc"
 
-	"github.com/jiaoji100/gracegrpc"
-	pb "github.com/jiaoji100/gracegrpc/example/helloworld"
+	"github.com/dmskys/gracegrpc"
+	pb "github.com/dmskys/gracegrpc/example/helloworld"
 )
 
 const (
 	addr = ":50051"
 )
 
-// server is used to implement helloworld.GreeterServer.
+// server is used to implement hollowed.GreeterServer.
 type server struct {
 	pb.UnimplementedGreeterServer
 }
 
-// SayHello implements helloworld.GreeterServer
-func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
+// SayHello implements hollowed.GreeterServer
+func (s *server) SayHello(_ context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
 	log.Printf("Received: %v,pid : %d", in.GetName(), os.Getpid())
 	return &pb.HelloReply{Message: "Hello " + in.GetName()}, nil
 }

@@ -1,4 +1,4 @@
-module github.com/jiaoji100/gracegrpc
+module github.com/dmskys/gracegrpc
 
 go 1.14
 
