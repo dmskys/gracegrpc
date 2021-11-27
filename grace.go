@@ -6,13 +6,13 @@
 package gracegrpc
 
 import (
-	"os"
 	"fmt"
 	"log"
 	"net"
+	"os"
 	"os/exec"
-	"syscall"
 	"os/signal"
+	"syscall"
 
 	"google.golang.org/grpc"
 )
@@ -39,7 +39,7 @@ func newApp(server *grpc.Server, addr string) (a *app, err error) {
 	// 创建或继承listener
 	a.listener, err = inheritOrCreateListener(a.addr)
 	if err != nil {
-		return nil, fmt.Errorf("create or import failed,err:", err)
+		return nil, fmt.Errorf("create or import failed,err:%v", err)
 	}
 
 	return a, nil
@@ -65,7 +65,7 @@ func (a *app) run() error {
 			panic(err)
 		}
 	}()
-	// Close the parent if we inherited and it wasn't init that started us.
+	// Close the parent if we inherited, and it wasn't init that started us.
 	if didInherit && ppid != 1 {
 		if err := syscall.Kill(ppid, syscall.SIGTERM); err != nil {
 			return fmt.Errorf("failed to close parent: %s", err)

@@ -20,13 +20,13 @@
 package main
 
 import (
-	"os"
-	"log"
-	"time"
 	"context"
+	"log"
+	"os"
+	"time"
 
-	"google.golang.org/grpc"
 	pb "github.com/jiaoji100/gracegrpc/example/helloworld"
+	"google.golang.org/grpc"
 )
 
 const (
